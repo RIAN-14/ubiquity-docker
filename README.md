@@ -17,7 +17,6 @@ cd ubiquity-docker
 ## Configuration
 ### General
 - PHP, Mysql, Apache and NginX versions are defined in `.env` file.
-- 
 ### Apache
 - Apache virtualhost config file is located in `apache/demo.apache.conf`
 - The default root of the web server is accessible locally from the `projects/www/public` folder
