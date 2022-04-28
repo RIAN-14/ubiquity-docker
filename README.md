@@ -14,6 +14,11 @@ git clone phpmv/ubiquity-docker
 cd ubiquity-docker
 ```
 
+copy env-example to .env:
+```
+cp env-example .env
+```
+
 ## Configuration
 ### General
 - PHP, Mysql, Apache and NginX versions are defined in `.env` file.

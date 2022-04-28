@@ -1,0 +1,8 @@
+# Versions ###############################
+PHP_VERSION=8.0
+MYSQL_VERSION=8.0
+APACHE_VERSION=2.4.53
+NGINX_VERSION=latest
+
+# Config ###############################
+MYSQL_PASSWORD=admin
