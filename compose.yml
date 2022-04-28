@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  php:
+    build:
+      context: './php/'
+      args:
+        - PHP_VERSION=${PHP_VERSION}
+    networks:
+      - backend
+    volumes:
+      - ./projects/:/var/www/html/
+  apache:
+    build:
+      context: './apache/'
+      args:
+        - APACHE_VERSION=${APACHE_VERSION}
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./projects/:/var/www/html/
+  nginx:
+    image: nginx:${NGINX_VERSION}
+    depends_on:
+      - php
+      - mysql
+    ports:
+        - "8080:80"
+    volumes:
+      - ./projects/:/var/www/html/
+      - ./nginx/:/etc/nginx/conf.d/
+    networks:
+      - frontend
+      - backend
+  mysql:
+    build:
+      context: './mysql'
+      args:
+        - MYSQL_VERSION=${MYSQL_VERSION}
+    volumes:
+    - ./mysql/db:/var/lib/mysql:rw
+    - ./mysql/sql:/docker-entrypoint-initdb.d/:rw
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '8099:80'
+    restart: always
+    environment:
+        PMA_HOST: mysql
+    depends_on:
+        - mysql
+networks:
+  frontend:
+  backend:
