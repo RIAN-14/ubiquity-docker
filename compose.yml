@@ -37,6 +37,22 @@ services:
     networks:
       - frontend
       - backend
+  swoole:
+    build:
+      context: './swoole/'
+      args:
+        - SWOOLE_VERSION=${SWOOLE_VERSION:-latest}
+    depends_on:
+      - php
+      - mysql
+    restart: always
+    ports:
+      - "8095:8095"
+    volumes:
+      - ./projects/:/var/www/html/
+    networks:
+      - frontend
+      - backend
   mysql:
     image: mysql:${MYSQL_VERSION:-8.0}
     volumes:
