@@ -73,6 +73,18 @@ services:
     depends_on:
         - mysql
     profiles: ["mysql"]
+  postgres :
+    image: postgres:${POSTGRES_VERSION:-12.4}
+    volumes:
+    - ./postgres/db:/var/lib/postgresql
+    - ./postgres/sql:/docker-entrypoint-initdb.d/:rw
+    networks:
+      - backend
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    profiles: ["postgres"]  
 networks:
   frontend:
   backend:
