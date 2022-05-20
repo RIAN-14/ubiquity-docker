@@ -10,7 +10,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 ```
-git clone phpmv/ubiquity-docker
+git clone https://github.com/phpMv/ubiquity-docker
 cd ubiquity-docker
 ```
 

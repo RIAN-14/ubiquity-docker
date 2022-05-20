@@ -86,7 +86,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
       - PGDATA=/work/data
-    profiles: ["postgres"]  
+    profiles: ["postgres"]
 networks:
   frontend:
   backend:
