@@ -60,6 +60,8 @@ services:
     - ./mysql/sql:/docker-entrypoint-initdb.d/:rw
     networks:
       - backend
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
     profiles: ["mysql"]
