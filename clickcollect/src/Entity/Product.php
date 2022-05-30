@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product", indexes={@ORM\Index(name="idSection", columns={"idSection"}), @ORM\Index(name="name", columns={"name"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
 class Product
 {
@@ -92,7 +92,7 @@ class Product
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Order", mappedBy="idproduct")
+     * @ORM\ManyToMany(targetEntity="Orders", mappedBy="idproduct")
      */
     private $idorder;
 
@@ -266,14 +266,14 @@ class Product
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, Orders>
      */
     public function getIdorder(): Collection
     {
         return $this->idorder;
     }
 
-    public function addIdorder(Order $idorder): self
+    public function addIdorder(Orders $idorder): self
     {
         if (!$this->idorder->contains($idorder)) {
             $this->idorder[] = $idorder;
@@ -283,7 +283,7 @@ class Product
         return $this;
     }
 
-    public function removeIdorder(Order $idorder): self
+    public function removeIdorder(Orders $idorder): self
     {
         if ($this->idorder->removeElement($idorder)) {
             $idorder->removeIdproduct($this);

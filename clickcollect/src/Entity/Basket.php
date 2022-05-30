@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Basket
  *
  * @ORM\Table(name="basket", indexes={@ORM\Index(name="idUser", columns={"idUser"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BasketRepository")
  */
 class Basket
 {
@@ -38,7 +38,7 @@ class Basket
     private $datecreation = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({

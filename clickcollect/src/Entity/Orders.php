@@ -7,12 +7,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Order
+ * Orders
  *
- * @ORM\Table(name="order", indexes={@ORM\Index(name="idEmployee", columns={"idEmployee"}), @ORM\Index(name="idTimeslot", columns={"idTimeslot"}), @ORM\Index(name="idUser", columns={"idUser"})})
- * @ORM\Entity
+ * @ORM\Table(name="orders", indexes={@ORM\Index(name="idEmployee", columns={"idEmployee"}), @ORM\Index(name="idTimeslot", columns={"idTimeslot"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Entity(repositoryClass="App\Repository\OrdersRepository")
  */
-class Order
+class Orders
 {
     /**
      * @var int
@@ -66,7 +66,7 @@ class Order
     private $missingnumber;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -76,7 +76,7 @@ class Order
     private $iduser;
 
     /**
-     * @var \Employee
+     * @var Employee
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
@@ -86,7 +86,7 @@ class Order
     private $idemployee;
 
     /**
-     * @var \Timeslot
+     * @var Timeslot
      *
      * @ORM\ManyToOne(targetEntity="Timeslot")
      * @ORM\JoinColumns({
