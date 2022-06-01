@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Welcome to Symfony!</title>
-    </head>
-    <body>
-        <h1>Order</h1>
+{% extends "base.html.twig" %}
+{% block title %} Order {% endblock %}
 
-        {{ order.id }}   {{order.status}}
+{% block body %}
+    <h1>Order</h1>
+    <p>status: {{order.status}}</p>
+    <p>amount: {{order.amount}}</p>
+    <p>toPay: {{order.topay}}</p>
+    <p>itemsNumber: {{order.itemsnumber}}</p>
 
-    </body>
-</html>
+    <br/>
+
+    <h1>Order Details</h1>
+
+    {#order.idproduct#}
+    {% for product in order.idproduct %}
+        <p>name: {{product.name}}</p>
+        <p>section: {{product.idsection.name}}</p>
+    {% endfor %}
+{% endblock %}
