@@ -12,9 +12,13 @@
 
     <h1>Order Details</h1>
 
-    {#order.idproduct#}
-    {% for product in order.idproduct %}
-        <p>name: {{product.name}}</p>
-        <p>section: {{product.idsection.name}}</p>
+    {% for detail in orderdetail %}
+        <h3> Product {{loop.index}}</h3>
+        <p> product name: {{detail.idproduct.name}}</p>
+        <p> store in: {{detail.idproduct.idsection.name}}</p>
+        <p> quantity: {{detail.quantity}} </p>
+        {#<a href="{{ path ('desactiver-user', {'id' : user.id})}}"  href="#">Bloquer</a>#}
+        {#<a href="{{ path ('editDetail', {'id': detail.id })}}" class="btn btn-danger text-dark">Edit</a>#}
     {% endfor %}
+
 {% endblock %}
